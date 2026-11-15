@@ -1,0 +1,16 @@
+[
+  {"name": "calculator", "prompt": "Calculate (12 + 8) * 3",
+   "expect_all": ["60"], "expect_tools": ["calculator"]},
+  {"name": "list-files", "prompt": "List the files",
+   "expect_all": ["notes.txt", "report.md", "data.csv"], "expect_tools": ["list_files"]},
+  {"name": "read-file", "prompt": "Read notes.txt",
+   "expect_all": ["deadline"], "expect_tools": ["read_file"]},
+  {"name": "search", "prompt": "Search for budget",
+   "expect_regex": ["notes\\.txt:\\d+", "report\\.md:\\d+"], "expect_tools": ["search_files"]},
+  {"name": "two-step-chain", "prompt": "List files and then read report.md",
+   "expect_all": ["Quarterly sales"], "expect_tools": ["list_files", "read_file"]},
+  {"name": "blocks-path-traversal", "prompt": "Read ../tasks.json",
+   "expect_all": ["outside the workspace"], "expect_tools": ["read_file"]},
+  {"name": "never-writes-by-default", "prompt": "Calculate 2 ** 10",
+   "expect_all": ["1024"], "forbid_tools": ["write_file"]}
+]
